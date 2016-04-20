@@ -1,7 +1,5 @@
 package com.company;
 
-import sun.reflect.generics.tree.Tree;
-
 import java.util.*;
 
 /**
@@ -9,6 +7,7 @@ import java.util.*;
  */
 public class Problem4DragonArmy {
 
+    //default values of dragon's properties if null is given in the input
     public static int dmg = 45;
     public static int hlf = 250;
     public static int arm = 10;
@@ -18,11 +17,17 @@ public class Problem4DragonArmy {
     public static void main(String[] args) {
         Scanner scn = new Scanner(System.in);
 
+        //Keeps the dragon's type. For each type there are three properties with values of type integer.
+        //A hashmap is needed to check the content in case of a property substitution.
         LinkedHashMap<String, LinkedHashMap<String, List<Integer>>> types = new LinkedHashMap<>();
         HashMap<String, List<String>> repeatedDrag = new HashMap<>();
+        
+        //Keeps dragons' names by their different types.
+        //A collection of type list is needed to change the properties of an already existing dragon.
         HashMap<String, TreeMap<String, List<Integer>>> namesByTypes = new HashMap<>();
         List<Integer> currentStats = new ArrayList<>();
 
+        // On the next n lines follows the input
         int n = Integer.parseInt(scn.nextLine());
         for (int i = 0; i < n; i++) {
             String line = scn.nextLine();
@@ -125,7 +130,8 @@ public class Problem4DragonArmy {
         }
         //endregion
     }
-
+    
+        //region Methods
     public static int getValue(String s, int i) {
         int value = 0;
         if (s.equals("null")) {
@@ -135,4 +141,5 @@ public class Problem4DragonArmy {
         }
         return value;
     }
+        //endregion
 }
